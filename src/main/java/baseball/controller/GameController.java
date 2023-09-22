@@ -20,26 +20,7 @@ public class GameController {
         while (true) {
             print(Message.INPUT_NUMBER);
             GameResult gameResult = checkAnswerService.isAnswer(checkFormat(readLine()));
-            if (gameResult.isCorrect()) {
-                if (restart()) {
-                    continue;
-                }
-                break;
-            }
         }
-    }
-
-    private boolean restart() {
-        print(Message.RETRY_MESSAGE);
-        return command();
-    }
-
-    private boolean command() {
-        return toInt(checkFormat(readLine())) == 1;
-    }
-
-    private int toInt(String command) {
-        return Integer.parseInt(command);
     }
 
     private void print(Message message) {
@@ -47,13 +28,9 @@ public class GameController {
     }
 
     private String checkFormat(String inputNumber) {
-        if (inputNumber.length() >= 4 || inputNumber.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-        if (Validator.checkFormat(inputNumber)) {
+        if (Validator.isThreeLetters(inputNumber) && Validator.isComposedOfNumber(inputNumber)) {
             return inputNumber;
-        } else {
-            throw new IllegalArgumentException();
         }
+        throw new IllegalArgumentException();
     }
 }
