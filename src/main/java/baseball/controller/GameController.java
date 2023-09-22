@@ -1,10 +1,9 @@
 package baseball.controller;
 
 import baseball.controller.message.Message;
+import baseball.controller.validator.Validator;
 import baseball.domain.GameResult;
 import baseball.service.CheckAnswerService;
-
-import java.util.regex.Pattern;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -32,10 +31,10 @@ public class GameController {
 
     private boolean restart() {
         print(Message.RETRY_MESSAGE);
-        return query();
+        return command();
     }
 
-    private boolean query() {
+    private boolean command() {
         return toInt(checkFormat(readLine())) == 1;
     }
 
@@ -48,10 +47,10 @@ public class GameController {
     }
 
     private String checkFormat(String inputNumber) {
-        if (inputNumber.length() >= 4) {
+        if (inputNumber.length() >= 4 || inputNumber.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        if (Pattern.matches("^[0-9]*$", inputNumber)) {
+        if (Validator.checkFormat(inputNumber)) {
             return inputNumber;
         } else {
             throw new IllegalArgumentException();
