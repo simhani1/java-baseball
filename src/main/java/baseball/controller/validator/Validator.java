@@ -6,7 +6,11 @@ public class Validator {
 
     private static final String NUMBER_REGEXP = "^[1-9]*$";
 
-    public static boolean checkFormat(String target) {
+    public static boolean isComposedOfNumber(String target) {
         return Pattern.matches(NUMBER_REGEXP, target);
+    }
+
+    public static boolean isThreeLetters(String inputNumber) {
+        return inputNumber.length() == 3;
     }
 }
