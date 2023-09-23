@@ -9,8 +9,8 @@ import baseball.service.CheckAnswerService;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameController {
-    private CheckAnswerService checkAnswerService;
 
+    private CheckAnswerService checkAnswerService;
     private static final int RETRY_COMMAND = 1;
 
     public GameController(CheckAnswerService checkAnswerService) {
