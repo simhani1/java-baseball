@@ -30,6 +30,7 @@ public class GameController {
                 gameResult = checkAnswerService.checkAnswer(computer.getNumber(), toList(checkNumberFormat(readLine())));
                 print(gameResult);
             } while (!gameResult.isCorrect());
+            print(Message.ANSWER_MESSAGE);
         } while (retryGame());
     }
 
