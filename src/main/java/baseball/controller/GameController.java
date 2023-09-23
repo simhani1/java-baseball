@@ -9,6 +9,7 @@ import baseball.service.CheckAnswerService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static baseball.controller.message.Message.*;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameController {
@@ -21,16 +22,16 @@ public class GameController {
     }
 
     public void run() {
-        print(Message.STARTING_MESSAGE);
+        print(STARTING_MESSAGE);
         do {
             Computer computer = new Computer();
             GameResult gameResult;
             do {
-                print(Message.INPUT_NUMBER);
+                print(INPUT_NUMBER);
                 gameResult = checkAnswerService.checkAnswer(computer.getNumber(), toList(checkNumberFormat(readLine())));
                 print(gameResult);
             } while (!gameResult.isCorrect());
-            print(Message.ANSWER_MESSAGE);
+            print(ANSWER_MESSAGE);
         } while (retryGame());
     }
 
@@ -51,6 +52,7 @@ public class GameController {
         System.out.println(message.getMessage());
     }
 
+    // TODO: 상수 처리
     private void print(GameResult gameResult) {
         String message = "";
         if (gameResult.getBallCount() >= 1) {
@@ -66,7 +68,7 @@ public class GameController {
     }
 
     private boolean retryGame() {
-        print(Message.RETRY_MESSAGE);
+        print(RETRY_MESSAGE);
         return toInt(checkCommandFormat(readLine())) == RETRY_COMMAND;
     }
 
