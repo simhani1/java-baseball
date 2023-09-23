@@ -20,6 +20,20 @@ public class GameResult {
         return ballCount;
     }
 
+    public void addStrikeCount(int count) {
+        this.strikeCount += count;
+    }
+
+    public void addBallCount(int count) {
+        this.ballCount += count;
+    }
+
+    public void changeCorrection() {
+        if (strikeCount == 3) {
+            this.correct = true;
+        }
+    }
+
     public boolean isCorrect() {
         return correct;
     }
