@@ -27,7 +27,7 @@ public class GameController {
             GameResult gameResult;
             do {
                 print(Message.INPUT_NUMBER);
-                gameResult = checkAnswerService.checkAnswer(computer, toList(checkNumberFormat(readLine())));
+                gameResult = checkAnswerService.checkAnswer(computer.getNumber(), toList(checkNumberFormat(readLine())));
                 print(gameResult);
             } while (!gameResult.isCorrect());
         } while (retryGame());
