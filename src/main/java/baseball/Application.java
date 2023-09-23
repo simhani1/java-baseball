@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.controller.GameController;
-import baseball.service.CheckAnswerServiceImpl;
+import baseball.service.impl.CheckAnswerServiceImpl;
 
 public class Application {
     public static void main(String[] args) {
