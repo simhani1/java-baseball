@@ -1,7 +1,8 @@
 package baseball.service;
 
+import baseball.domain.Computer;
 import baseball.domain.GameResult;
 
 public interface CheckAnswerService {
-    GameResult isAnswer(String inputNumber);
+    GameResult checkAnswer(Computer computer, String inputNumber);
 }
