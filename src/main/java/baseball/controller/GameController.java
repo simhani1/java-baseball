@@ -6,6 +6,9 @@ import baseball.domain.Computer;
 import baseball.domain.GameResult;
 import baseball.service.CheckAnswerService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameController {
@@ -24,10 +27,16 @@ public class GameController {
             GameResult gameResult;
             do {
                 print(Message.INPUT_NUMBER);
-                gameResult = checkAnswerService.checkAnswer(computer, checkNumberFormat(readLine()));
+                gameResult = checkAnswerService.checkAnswer(computer, toList(checkNumberFormat(readLine())));
                 print(gameResult);
             } while (!gameResult.isCorrect());
         } while (retryGame());
+    }
+
+    private List<Integer> toList(String inputNumber) {
+        return inputNumber.chars()
+                .mapToObj(Character::getNumericValue)
+                .collect(Collectors.toList());
     }
 
     private String checkNumberFormat(String inputNumber) {
