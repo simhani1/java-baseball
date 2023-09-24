@@ -52,7 +52,6 @@ public class GameController {
         System.out.println(message.getMessage());
     }
 
-    // TODO: 상수 처리
     private void print(GameResult gameResult) {
         System.out.println(makeResultMessage(gameResult));
     }
