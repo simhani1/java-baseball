@@ -65,21 +65,21 @@ public class GameController {
         return sb.toString();
     }
 
-    private void containNothing(StringBuilder sb, GameResult gameResult) {
-        if (gameResult.getBallCount() == 0 && gameResult.getStrikeCount() == 0) {
-            sb.append("낫싱");
+    private void containBall(StringBuilder sb, GameResult gameResult) {
+        if (gameResult.getBallCount() >= 1) {
+            sb.append(gameResult.getBallCount()).append(BALL_MESSAGE.getMessage());
         }
     }
 
     private void containStrike(StringBuilder sb, GameResult gameResult) {
         if (gameResult.getStrikeCount() >= 1) {
-            sb.append(gameResult.getStrikeCount() + "스트라이크");
+            sb.append(gameResult.getStrikeCount()).append(STRIKE_MESSAGE.getMessage());
         }
     }
 
-    private void containBall(StringBuilder sb, GameResult gameResult) {
-        if (gameResult.getBallCount() >= 1) {
-            sb.append(gameResult.getBallCount() + "볼 ");
+    private void containNothing(StringBuilder sb, GameResult gameResult) {
+        if (gameResult.getBallCount() == 0 && gameResult.getStrikeCount() == 0) {
+            sb.append(NOTHING_MESSAGE.getMessage());
         }
     }
 
