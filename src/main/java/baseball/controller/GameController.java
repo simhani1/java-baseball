@@ -54,17 +54,21 @@ public class GameController {
 
     // TODO: 상수 처리
     private void print(GameResult gameResult) {
-        String message = "";
+        System.out.println(makeResultMessage(gameResult));
+    }
+
+    private String makeResultMessage(GameResult gameResult) {
+        StringBuilder sb = new StringBuilder();
         if (gameResult.getBallCount() >= 1) {
-            message += (gameResult.getBallCount() + "볼 ");
+            sb.append(gameResult.getBallCount() + "볼 ");
         }
         if (gameResult.getStrikeCount() >= 1) {
-            message += (gameResult.getStrikeCount() + "스트라이크");
+            sb.append(gameResult.getStrikeCount() + "스트라이크");
         }
         if (gameResult.getBallCount() == 0 && gameResult.getStrikeCount() == 0) {
-            message += "낫싱";
+            sb.append("낫싱");
         }
-        System.out.println(message);
+        return sb.toString();
     }
 
     private boolean retryGame() {
