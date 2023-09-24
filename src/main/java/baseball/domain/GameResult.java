@@ -28,10 +28,11 @@ public class GameResult {
         this.ballCount += count;
     }
 
-    public void changeCorrection() {
+    public GameResult changeCorrection() {
         if (strikeCount == 3) {
             this.correct = true;
         }
+        return this;
     }
 
     public boolean isCorrect() {
