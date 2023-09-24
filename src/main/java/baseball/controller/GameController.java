@@ -59,16 +59,28 @@ public class GameController {
 
     private String makeResultMessage(GameResult gameResult) {
         StringBuilder sb = new StringBuilder();
-        if (gameResult.getBallCount() >= 1) {
-            sb.append(gameResult.getBallCount() + "볼 ");
-        }
-        if (gameResult.getStrikeCount() >= 1) {
-            sb.append(gameResult.getStrikeCount() + "스트라이크");
-        }
+        containBall(sb, gameResult);
+        containStrike(sb, gameResult);
+        containNothing(sb, gameResult);
+        return sb.toString();
+    }
+
+    private void containNothing(StringBuilder sb, GameResult gameResult) {
         if (gameResult.getBallCount() == 0 && gameResult.getStrikeCount() == 0) {
             sb.append("낫싱");
         }
-        return sb.toString();
+    }
+
+    private void containStrike(StringBuilder sb, GameResult gameResult) {
+        if (gameResult.getStrikeCount() >= 1) {
+            sb.append(gameResult.getStrikeCount() + "스트라이크");
+        }
+    }
+
+    private void containBall(StringBuilder sb, GameResult gameResult) {
+        if (gameResult.getBallCount() >= 1) {
+            sb.append(gameResult.getBallCount() + "볼 ");
+        }
     }
 
     private boolean retryGame() {
